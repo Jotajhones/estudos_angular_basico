@@ -1,0 +1,25 @@
+<div class="screen-container">
+
+    <div class="task-container">
+
+        <div class="task-header">Tasks</div>
+
+        <div class="tasks">
+
+            @for(item of mock(); track item.id) {
+
+            <app-task-card-component 
+            [task]="item" 
+            [createdAt]="createdAt()"
+            (taskId)="delete($event)">
+            </app-task-card-component>
+
+            } @empty {
+
+            <div class="skeleton">
+                não Existem tarefas Disponiveis!
+            </div>
+            }
+        </div>
+    </div>
+</div>

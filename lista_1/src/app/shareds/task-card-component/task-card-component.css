@@ -1,0 +1,102 @@
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Adiciona um respiro entre título, badges e botão */
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Efeito ao passar o mouse */
+.task-item:hover {
+  background-color: var(--bg-highlight);
+}
+
+/* O primeiro agrupamento (ID + Título) */
+.task-item > div:first-child {
+  flex: 1; /* A MÁGICA: Cresce ocupando o vazio e empurra o resto pra direita */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* O segundo agrupamento (Badges) */
+.task-item > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Textos base */
+.id {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.title {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* =========================================
+   BADGES (Pílulas de Status e Prioridade)
+   ========================================= */
+.status,
+.prioridade,
+.data-criacao {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px;
+  /* Deixa arredondado igual uma pílula */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Classes dinâmicas (Você vai aplicar com a lógica do Angular no HTML) */
+
+/* Prioridades */
+.alta {
+  background-color: var(--danger-color);
+  color: var(--text-inverse);
+}
+
+.media {
+  background-color: var(--warning-color);
+  color: var(--text-main);
+  /* Warning (amarelo) fica melhor com texto escuro */
+}
+
+/* Status */
+.pendente {
+  background-color: var(--bg-body);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.concluida {
+  background-color: var(--success-color);
+  color: var(--text-inverse);
+}
+
+.button {
+  background-color: transparent;
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+  font-weight: bolder;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--danger-color);
+  color: var(--text-inverse);
+}

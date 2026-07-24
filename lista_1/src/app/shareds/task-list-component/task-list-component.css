@@ -1,0 +1,36 @@
+/* Container principal para centralizar a tela */
+.screen-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* O "Card" que engloba toda a lista */
+.task-container {
+  background-color: var(--bg-component);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+/* Cabeçalho da lista */
+.task-header {
+  padding: 1rem 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Espaçamento interno da lista de tarefas */
+.tasks {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Espaço entre os itens da lista */
+}
+
+
+

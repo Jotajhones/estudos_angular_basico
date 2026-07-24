@@ -1,0 +1,13 @@
+
+<div class="task-item">
+    <div>
+        <span class="id"># {{task().id}}</span>
+        <span class="title">{{task().title}}</span>
+    </div>
+    <div>
+        <span class="status">{{task().status | titlecase}}</span>
+        <span class="prioridade">{{task().priority | titlecase}}</span>
+        <span class="data-criacao">{{createdAt() | date: "dd/MM/y"}}</span>
+    </div>
+    <button class="button" (click)="delete(task().id)">X</button>
+</div>
