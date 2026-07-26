@@ -1,0 +1,27 @@
+/* Container das estatísticas, alinhado com o padding do pai */
+.stats-container {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-highlight);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Rótulo de texto */
+.stats-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Bolha (Badge) com o número total */
+.stats-badge {
+  background-color: var(--warning-color);
+  color: var(--text-inverse);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px; /* Formato de pílula arredondada */
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-sm);
+}

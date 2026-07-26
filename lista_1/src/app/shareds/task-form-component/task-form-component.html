@@ -1,0 +1,52 @@
+<form [formGroup]="formulario">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="assigneeId">
+
+    <label>Título
+        <input type="text" formControlName="title" placeholder="Digite o título da tarefa">
+
+        @if (formulario.get('title')?.hasError('required') && formulario.get('title')?.touched) {
+        <small>Campo obrigatório.</small>
+        }
+        @if (formulario.get('title')?.hasError('minlength') && formulario.get('title')?.touched) {
+        <small>Precisa de pelo menos 5 caracteres.</small>
+        }
+
+    </label>
+
+    <label>Status
+        <select formControlName="status">
+            <option value="" selected disabled>Selecione o status</option>
+            <option value="aberta">Aberta</option>
+            <option value="pendente">Pendente</option>
+            <option value="concluida">Concluída</option>
+            <option value="cancelada">Cancelada</option>
+        </select>
+
+        @if (formulario.get('status')?.invalid && formulario.get('status')?.touched) {
+        <small>Selecione um status.</small>
+        }
+    </label>
+
+    <label>Prioridade
+        <select formControlName="priority">
+            <option value="" selected disabled>Selecione a prioridade</option>
+            <option value="alta">Alta</option>
+            <option value="media">Média</option>
+            <option value="baixa">Baixa</option>
+        </select>
+
+
+        @if (formulario.get('priority')?.invalid && formulario.get('priority')?.touched) {
+        <small>Selecione uma prioridade.</small>
+        }
+    </label>
+
+
+
+
+    <button type="submit" [disabled]="formulario.invalid" (click)="addTask()">Adicionar</button>
+    <button type="button" [disabled]="formulario.invalid">Atualizar</button>
+    <button type="button" (click)="limpar()">Limpar</button>
+
+</form>

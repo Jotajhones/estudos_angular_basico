@@ -89,7 +89,7 @@ const MOCK_TASKS = [
 
 * **Descrição:** Crie um `TaskFormComponent`. Importe `ReactiveFormsModule`. Crie um `FormGroup` com os campos `title` e `priority`. Crie a estrutura HTML e faça o binding com `[formGroup]` e `formControlName`.
 * **Objetivo de aprendizado:** Setup de Reactive Forms moderno.
-
+ 
 ### 12. Validações e Feedback
 
 * **Descrição:** Adicione `Validators.required` e `Validators.minLength(5)` ao campo `title`. No HTML, exiba uma tag `<small>` vermelha com a mensagem "Título muito curto" apenas se o campo estiver inválido **e** "sujo" (`touched`). Desabilite o botão de submit se `form.invalid`.
