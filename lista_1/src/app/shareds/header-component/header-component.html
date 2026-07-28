@@ -1,7 +1,25 @@
 <div class="header">
     <div class="header-container">
-        <span>{{titulo}}</span>
-        <span>{{dataAtual | date: 'dd MMM y'}}</span>
-        <app-clock-component></app-clock-component>
+
+        <div>
+            <span>{{titulo}}</span>
+            <span>{{dataAtual | date: 'dd MMM y'}}</span>
+            <app-clock-component></app-clock-component>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a 
+                    routerLink="dashboards" 
+                    routerLinkActive="active"
+                    >Dashboard</a></li>
+
+                <li><a 
+                    routerLink="about" 
+                    routerLinkActive="active"
+                    >About</a></li>
+            </ul>
+        </nav>
+
     </div>
 </div>

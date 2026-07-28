@@ -1,0 +1,71 @@
+.task-detail-card {
+  background-color: var(--bg-component);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+}
+
+.task-info {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.badge-id, .badge-assigned {
+  background-color: var(--bg-highlight);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.task-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.task-meta {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+/* Estilização base para os badges de status e prioridade */
+.status-badge, .priority-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+/* Cores dinâmicas baseadas nas variáveis do root */
+.status-badge[data-status="concluida"], 
+.priority-badge[data-priority="baixa"] {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--success-color);
+}
+
+.priority-badge[data-priority="media"] {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--warning-color);
+}
+
+.status-badge[data-status="pendente"], 
+.priority-badge[data-priority="alta"] {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--danger-color);
+}
+
+.status-badge[data-status="aberta"] {
+  background-color: rgba(79, 70, 229, 0.15);
+  color: var(--primary-color);
+}

@@ -11,7 +11,8 @@ import { Task } from '../task-list-component/task-interface';
 export class TaskFormComponent {
 
   task = input<Task | null>(null);
-  addNovaTask = output<any>();
+  addNovaTask = output<Task>();
+  updateTask = output<Task>();
 
   formulario = new FormGroup({
     id: new FormControl<number | null>(null),
@@ -43,13 +44,20 @@ export class TaskFormComponent {
     this.formulario.reset();
   }
 
-  addTask() {
+  addTask(): void {
 
-    if(this.formulario) {
-
-      const newTask = this.formulario.value;
+    if (this.formulario.valid) {
+      const newTask = this.formulario.value as Task;
       this.addNovaTask.emit(newTask);
-      console.log(newTask);
+    }
+  }
+
+  updateMethod(): void {
+
+    if (this.formulario.valid) {
+      const newTask =  this.formulario.getRawValue() as Task;
+      this.updateTask.emit(newTask);
+      console.log(newTask)
     }
   }
 

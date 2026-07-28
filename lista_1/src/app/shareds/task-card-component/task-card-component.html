@@ -1,5 +1,10 @@
 
-<div class="task-item" (click)="enviarTask(task())">
+<div class="task-item"
+ (click)="enviarTask(task())"
+  (dblclick)="goToTask(task().id, task())"
+  appHighlightPriority 
+  [priority]="task().priority">
+    
     <div>
         <span class="id"># {{task().id}}</span>
         <span class="title">{{task().title}}</span>

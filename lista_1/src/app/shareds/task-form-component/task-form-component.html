@@ -46,7 +46,7 @@
 
 
     <button type="submit" [disabled]="formulario.invalid" (click)="addTask()">Adicionar</button>
-    <button type="button" [disabled]="formulario.invalid">Atualizar</button>
+    <button type="button" [disabled]="formulario.invalid" (click)="updateMethod()">Atualizar</button>
     <button type="button" (click)="limpar()">Limpar</button>
 
 </form>

@@ -1,0 +1,10 @@
+div {
+    margin: 20px auto;
+    background-color: var(--bg-component);
+    color: var(--text-main);
+    padding: 20px;
+    text-indent: 1em;
+    max-width: 600px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+}

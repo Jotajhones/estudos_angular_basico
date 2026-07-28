@@ -1,8 +1,9 @@
-import { Component, computed, effect, OnInit, output, Signal, signal } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, output, Signal, signal } from '@angular/core';
 import { TaskCardComponent } from "../task-card-component/task-card-component";
 import { Task } from './task-interface';
 import { TaskStatsComponent } from "../task-stats-component/task-stats-component";
 import { TaskFormComponent } from "../task-form-component/task-form-component";
+
 
 const MOCK_TASKS: Task[] = [
   { id: 0, title: 'Aprender Control Flow', status: 'pendente', priority: 'alta', assigneeId: 0 },
@@ -49,18 +50,28 @@ export class TaskListComponent implements OnInit {
     localStorage.setItem('TaskFlow', JSON.stringify(lista));
   }
 
-  receberTask(task: any) {
-    this.selectedTask.set(task);
+  receberTask(task: Task | null) {
+    const item: Task = task as Task;
+    this.selectedTask.set(item);
   }
 
-  addNovaTask(task: any) {
-    
-    if(task) {
+  addNovaTask(task: Task) {
+
+    if (task) {
       const last = this.mock().at(-1)?.id;
       task.id = last ? last + 1 : 1;
       task.assigneeId = task.id;
       this.mock.update(itens => [...itens, task]);
     }
   }
+
+  updateTask(task: Task) {
+    if (task) {
+      this.mock.update(lista =>
+        lista.map(item => item.id === task.id ? task : item)
+      );
+    }
+  }
+
 
 }
