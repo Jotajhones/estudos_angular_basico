@@ -148,4 +148,4 @@ const MOCK_TASKS = [
 Para evitar pesquisas a cada letra digitada, converta esse signal de volta para RxJS usando `toObservable(this.searchTerm)`. Aplique os operadores `debounceTime(500)` e `distinctUntilChanged()`, e dentro do `subscribe()`, atualize a lista exibida.
 * **Objetivo de aprendizado:** Entender a diferença prática: **Signals** são excelentes para manter o *estado atual* (o texto da busca), mas o **RxJS** continua sendo o rei absoluto para lidar com o *tempo e fluxo de eventos* (esperar 500ms para pesquisar).
 
----
+--- 

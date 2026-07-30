@@ -1,5 +1,5 @@
 import { Component, inject, input, OnInit, signal } from '@angular/core';
-import { Task } from '../task-list-component/task-interface';
+import { Task } from '../../model/task-interface';
 import { TaskCardComponent } from '../task-card-component/task-card-component';
 
 @Component({

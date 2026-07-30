@@ -1,9 +1,10 @@
-import { Component, computed, effect, inject, OnInit, output, Signal, signal } from '@angular/core';
-import { TaskCardComponent } from "../task-card-component/task-card-component";
-import { Task } from './task-interface';
-import { TaskStatsComponent } from "../task-stats-component/task-stats-component";
-import { TaskFormComponent } from "../task-form-component/task-form-component";
-
+import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
+import { TaskCardComponent } from "../../shareds/task-card-component/task-card-component";
+import { Task } from '../../model/task-interface';
+import { TaskStatsComponent } from "../../shareds/task-stats-component/task-stats-component";
+import { TaskFormComponent } from "../../shareds/task-form-component/task-form-component";
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs';
 
 const MOCK_TASKS: Task[] = [
   { id: 0, title: 'Aprender Control Flow', status: 'pendente', priority: 'alta', assigneeId: 0 },
@@ -21,15 +22,35 @@ const MOCK_TASKS: Task[] = [
 export class TaskListComponent implements OnInit {
 
   mock = signal<Task[]>([]);
+  filteredTasks = signal<Task[]>([]);
   createdAt = signal<Date | null>(null);
   pendentes = computed(() => this.mock().filter(t => t.status === 'pendente').length);
   selectedTask = signal<Task | null>(null);
+  searchTerm = signal<string>('');
 
   constructor() {
 
     effect(() => {
       this.save(this.mock());
     });
+
+    toObservable(this.searchTerm)
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged()
+      )
+      .subscribe((termoDigitado) => {
+
+        if (!termoDigitado) {
+          this.filteredTasks.set(this.mock());
+        } else {
+          const filtrado = this.mock().filter((task) => {
+
+            return task.title.toLowerCase().includes(termoDigitado.toLowerCase());
+          });
+          this.filteredTasks.set(filtrado);
+        }
+      });
   }
 
   ngOnInit(): void {
@@ -38,8 +59,8 @@ export class TaskListComponent implements OnInit {
 
   init(): void {
     this.mock.set(MOCK_TASKS);
+    this.filteredTasks.set(MOCK_TASKS);
     this.createdAt.set(new Date());
-
   }
 
   delete(id: number): void {
@@ -72,6 +93,5 @@ export class TaskListComponent implements OnInit {
       );
     }
   }
-
 
 }

@@ -1,0 +1,38 @@
+<div class="screen-container">
+
+
+    <div class="task-container">
+
+        <div class="task-header">Tasks
+            <div class="search-container">
+                <input type="text" 
+                class="search-input" 
+                placeholder="Pesquisar tarefas..." 
+                #searchInput
+                (input)="searchTerm.set(searchInput.value)">
+            </div>
+        </div>
+
+        <app-task-stats-component [totalPendentes]="pendentes()">
+        </app-task-stats-component>
+
+        <div class="tasks">
+
+            @for(item of filteredTasks(); track item.id) {
+
+            <app-task-card-component [task]="item" [createdAt]="createdAt()" (taskId)="delete($event)"
+                (taskItem)="receberTask($event)">
+            </app-task-card-component>
+
+            } @empty {
+
+            <div class="skeleton">
+                não Existem tarefas Disponiveis!
+            </div>
+            }
+        </div>
+    </div>
+
+    <app-task-form-component [task]="selectedTask()" (addNovaTask)="addNovaTask($event)"
+        (updateTask)="updateTask($event)"></app-task-form-component>
+</div>

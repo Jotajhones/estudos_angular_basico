@@ -1,6 +1,6 @@
 import { DatePipe, TitleCasePipe } from '@angular/common';
 import { Component, inject, input, output } from '@angular/core';
-import { Task } from '../task-list-component/task-interface';
+import { Task } from '../../model/task-interface';
 import { Router } from '@angular/router';
 import { HighlightPriority } from "../../directives/highlight-priority";
 

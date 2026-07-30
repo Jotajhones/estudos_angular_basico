@@ -12,7 +12,7 @@ export const routes: Routes = [
         children: [
             {
                 path: 'dashboards',
-                loadComponent: () => import('./shareds/task-list-component/task-list-component').then(m => m.TaskListComponent)
+                loadComponent: () => import('./features/task-list-component/task-list-component').then(m => m.TaskListComponent)
             },
             {
                 path: 'about',
@@ -21,6 +21,10 @@ export const routes: Routes = [
             {
                 path: 'task/:id',
                 loadComponent: () => import('./shareds/task-page/task-page').then(m => m.TaskPage)
+            },
+            {
+                path: 'users',
+                loadComponent: () => import('./features/users-page/users-page').then(m => m.UsersPage)
             }
         ]
     }

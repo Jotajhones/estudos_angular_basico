@@ -1,0 +1,17 @@
+<div class="users-container">
+    <div class="form-card">
+
+        <form [formGroup]="usuario">
+            <label>Atribuir a:
+
+                <select formControlName="user">
+                    <option value="" disabled selected>Selecione um usuário...</option>
+                    
+                    @for(usuario of users(); track usuario.id) {
+                        <option [value]="usuario.id">{{usuario.name}}</option>
+                    }
+                </select>
+            </label>
+        </form>
+    </div>
+</div>
